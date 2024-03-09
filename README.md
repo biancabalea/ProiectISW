@@ -3,7 +3,7 @@
  - Backend - Dineti Adela Antonia
  - Frontend - Anghel Monica Mihaela
 
-Pentru acest proiect ne-am gandit sa dezvolatm o platforma web pentru a veni in ajutorul personalului din departamentul HR al unei firme.
+In acest proiect ne-am gandit sa dezvolatm o platforma web pentru a veni in ajutorul personalului din departamentul HR al unei firme.
 Pentru asta vom utiliza:
 - baze de date : MySQL
 - backend: Springboot
