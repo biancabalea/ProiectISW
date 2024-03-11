@@ -16,7 +16,7 @@ public class DepartamentController {
     }
 
     @GetMapping
-    public List<Departament> getAllDepartement() {
+    public List<Departament> getAllDepartements() {
         return departamentRepository.findAll();
     }
 
