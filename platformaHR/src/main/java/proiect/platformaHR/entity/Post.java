@@ -1,5 +1,6 @@
 package proiect.platformaHR.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class Post {
     private Integer id;
     @Column(name="post_name")
     private String name;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "post_dept_id", referencedColumnName = "dept_id")
     private Departament departament;

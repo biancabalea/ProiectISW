@@ -7,7 +7,7 @@ import proiect.platformaHR.repository.AngajatRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("anagajats")
+@RequestMapping("angajats")
 public class AngajatController {
 
     public AngajatRepository angajatRepository;
@@ -19,8 +19,8 @@ public class AngajatController {
     public List<Angajat> getAllAngajats() {
        return  angajatRepository.findAll();
     }
-    @GetMapping("/(id)")
-    public Angajat getAngajat(Integer id){
+    @GetMapping("/{id}")
+    public Angajat getAngajat(@PathVariable("id") Integer id){
         return angajatRepository.findById(id).get();
     }
     @PostMapping

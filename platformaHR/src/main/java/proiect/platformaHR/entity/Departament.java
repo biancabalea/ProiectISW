@@ -1,5 +1,6 @@
 package proiect.platformaHR.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class Departament {
     private Integer id;
     @Column(name="dept_name")
     private String name;
+    @JsonManagedReference
     @OneToMany(mappedBy = "departament", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Post> postList = new ArrayList<>();
 
