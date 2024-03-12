@@ -3,6 +3,7 @@ package proiect.platformaHR.controller;
 import org.springframework.web.bind.annotation.*;
 import proiect.platformaHR.entity.Angajat;
 import proiect.platformaHR.repository.AngajatRepository;
+import proiect.platformaHR.service.AngajatService;
 
 import java.util.List;
 
@@ -10,49 +11,38 @@ import java.util.List;
 @RequestMapping("angajats")
 public class AngajatController {
 
-    public AngajatRepository angajatRepository;
+    private AngajatService angajatService;
 
-    public AngajatController(AngajatRepository angajatRepository) {
-        this.angajatRepository = angajatRepository;
+    public AngajatController(AngajatService angajatService) {
+        this.angajatService = angajatService;
     }
+
     @GetMapping
     public List<Angajat> getAllAngajats() {
-       return  angajatRepository.findAll();
+       return angajatService.getAllAngajats();
     }
     @GetMapping("/{id}")
     public Angajat getAngajat(@PathVariable("id") Integer id){
-        return angajatRepository.findById(id).get();
+        return angajatService.getAngajat(id);
     }
     @PostMapping
     public Angajat createAngajat(@RequestBody Angajat angajat){
-        return angajatRepository.save(angajat);
+        return angajatService.createAngajat(angajat);
     }
 
     @PutMapping("/{id}")
     public Angajat updateAngajat(@PathVariable("id") Integer id, @RequestBody Angajat angajat) {
-        angajat.setId(id);
-        return angajatRepository.save(angajat);
+        return angajatService.updateAngajat(id, angajat);
     }
 
     @PatchMapping("/{id}")
     public Angajat updatePatchAngajat(@PathVariable("id") Integer id, @RequestBody Angajat angajat) {
-        Angajat modifiedAngajat = angajatRepository.findById(id).get();
-        if(angajat.getName() != null) {
-            modifiedAngajat.setName(angajat.getName());
-        }
-        if(angajat.isFulltime()) {
-            modifiedAngajat.setFulltime(angajat.isFulltime());
-        }
-        if(angajat.getSalariu() != null){
-            modifiedAngajat.setSalariu(angajat.getSalariu());
-        }
-        return angajatRepository.save(modifiedAngajat);
+        return angajatService.updatePatchAngajat(id, angajat);
     }
 
     @DeleteMapping("/{id}")
     public void deleteAngajat(@PathVariable("id") Integer id) {
-        angajatRepository.deleteById(id);
+        angajatService.deleteAngajat(id);
     }
-
 
 }
