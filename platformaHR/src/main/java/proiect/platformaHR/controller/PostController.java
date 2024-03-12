@@ -1,5 +1,6 @@
 package proiect.platformaHR.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import proiect.platformaHR.entity.Post;
 import proiect.platformaHR.service.PostService;
@@ -25,11 +26,13 @@ public class PostController {
       return postService.getPost(id);
     }
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Post createPost(@RequestBody Post post) {
         return postService.createPost(post);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void deletePost(@PathVariable("id") Integer id){
         postService.deletePost(id);
     }

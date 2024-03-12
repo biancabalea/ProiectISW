@@ -1,5 +1,6 @@
 package proiect.platformaHR.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import proiect.platformaHR.entity.Departament;
 import proiect.platformaHR.service.DepartamentService;
@@ -26,11 +27,13 @@ public class DepartamentController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Departament createDepartament(@RequestBody Departament departament){
         return departamentService.createDepartament(departament);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void deleteDepartament(@PathVariable("id") Integer id) {
         departamentService.deleteDepartament(id);
     }
