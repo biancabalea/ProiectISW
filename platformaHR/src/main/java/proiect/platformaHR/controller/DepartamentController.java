@@ -2,36 +2,36 @@ package proiect.platformaHR.controller;
 
 import org.springframework.web.bind.annotation.*;
 import proiect.platformaHR.entity.Departament;
-import proiect.platformaHR.repository.DepartamentRepository;
-
+import proiect.platformaHR.service.DepartamentService;
 import java.util.List;
 
 @RestController
 @RequestMapping("/departaments")
 public class DepartamentController {
-    private DepartamentRepository departamentRepository;
 
-    public DepartamentController(DepartamentRepository departamentRepository) {
-        this.departamentRepository = departamentRepository;
+    private DepartamentService departamentService;
+
+    public DepartamentController(DepartamentService departamentService) {
+        this.departamentService = departamentService;
     }
 
     @GetMapping
     public List<Departament> getAllDepartements() {
-        return departamentRepository.findAll();
+        return departamentService.getAllDepartements();
     }
 
     @GetMapping("/{id}")
     public Departament getDepartament (@PathVariable("id") Integer id) {
-        return departamentRepository.findById(id).get();
+        return departamentService.getDepartament(id);
     }
 
     @PostMapping
     public Departament createDepartament(@RequestBody Departament departament){
-        return departamentRepository.save(departament);
+        return departamentService.createDepartament(departament);
     }
 
     @DeleteMapping("/{id}")
     public void deleteDepartament(@PathVariable("id") Integer id) {
-        departamentRepository.deleteById(id);
+        departamentService.deleteDepartament(id);
     }
 }

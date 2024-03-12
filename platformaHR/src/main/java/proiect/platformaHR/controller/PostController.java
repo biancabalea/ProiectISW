@@ -2,7 +2,6 @@ package proiect.platformaHR.controller;
 
 import org.springframework.web.bind.annotation.*;
 import proiect.platformaHR.entity.Post;
-import proiect.platformaHR.repository.PostRepository;
 import proiect.platformaHR.service.PostService;
 
 import java.util.List;

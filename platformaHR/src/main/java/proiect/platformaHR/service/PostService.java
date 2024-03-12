@@ -1,8 +1,6 @@
 package proiect.platformaHR.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import proiect.platformaHR.entity.Post;
 import proiect.platformaHR.repository.PostRepository;
 
