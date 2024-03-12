@@ -19,6 +19,8 @@ public class Angajat {
     private boolean fulltime;
     @Column(name="angajat_salariu")
     private Integer salariu;
+    @Column(name="angajat_zile_co")
+    private Integer zileco;
     @ManyToMany
     @JoinTable(name = "enrolment",
                joinColumns = {@JoinColumn(name="angajat_id")},
@@ -58,6 +60,14 @@ public class Angajat {
 
     public void setSalariu(Integer salariu) {
         this.salariu = salariu;
+    }
+
+    public Integer getZileco() {
+        return zileco;
+    }
+
+    public void setZileco(Integer zileco) {
+        this.zileco = zileco;
     }
 
     public List<Post> getPostList() {
