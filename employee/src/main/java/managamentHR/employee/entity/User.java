@@ -10,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String username;
+    private String department; // Modificarea numelui membrului pentru departament
     private String name;
     private String email;
 
@@ -22,12 +22,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getName() {
