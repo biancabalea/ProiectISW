@@ -29,7 +29,7 @@ export default function Home() {
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
-              <th scope="col">Username</th>
+              <th scope="col">Department</th>
               <th scope="col">Email</th>
               <th scope="col">Action</th>
             </tr>
@@ -41,7 +41,7 @@ export default function Home() {
                   {index + 1}
                 </th>
                 <td>{user.name}</td>
-                <td>{user.username}</td>
+                <td>{user.department}</td>
                 <td>{user.email}</td>
                 <td>
                   <Link

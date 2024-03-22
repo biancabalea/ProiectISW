@@ -7,11 +7,11 @@ export default function AddUser() {
 
   const [user, setUser] = useState({
     name: "",
-    username: "",
+    department: "",
     email: "",
   });
 
-  const { name, username, email } = user;
+  const { name, department, email } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -44,15 +44,15 @@ export default function AddUser() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="Username" className="form-label">
-                Username
+              <label htmlFor="Department" className="form-label">
+                Department
               </label>
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter your username"
-                name="username"
-                value={username}
+                placeholder="Enter your department"
+                name="department"
+                value={department}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
