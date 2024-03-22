@@ -24,6 +24,9 @@ export default function Home() {
   return (
     <div className="container">
       <div className="py-4">
+      <Link className="btn btn-outline-secondary mx-2" to="/adduser">
+            Add Employee
+          </Link>
         <table className="table border shadow">
           <thead>
             <tr>
