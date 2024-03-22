@@ -10,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String department; // Modificarea numelui membrului pentru departament
+    private String department; 
     private String name;
     private String email;
 
