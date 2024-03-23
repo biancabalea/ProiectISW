@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/"); 
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            HR APP
-          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -20,8 +23,15 @@ export default function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-
-
+          <Link className="navbar-brand" to="/">
+            HR APP
+          </Link>
+          <button
+            className="btn btn-outline-light me-2"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </div>
