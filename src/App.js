@@ -2,6 +2,7 @@ import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
+import UserHome from "./pages/UserHome"; 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddUser from "./users/AddUser";
 import EditUser from "./users/EditUser";
@@ -14,7 +15,8 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route exact path="/home" element={<Home />} /> 
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/userhome" element={<UserHome />} /> 
           <Route exact path="/adduser" element={<AddUser />} />
           <Route exact path="/edituser/:id" element={<EditUser />} />
           <Route exact path="/viewuser/:id" element={<ViewUser />} />
