@@ -9,10 +9,15 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "admin") {
-      navigate("/home"); 
+    if ((username === "admin" && password === "admin") || (username === "user" && password === "user")) {
+      if (username === "admin") {
+        navigate("/home");
+      } else {
+        navigate("/userhome");
+      }
     } else {
-      navigate("/userhome"); 
+      // Dacă username-ul și parola nu sunt corecte pentru niciunul dintre utilizatori
+      alert("Acces nepermis");
     }
   };
 
