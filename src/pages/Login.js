@@ -17,7 +17,7 @@ const Login = () => {
       }
     } else {
       // Dacă username-ul și parola nu sunt corecte pentru niciunul dintre utilizatori
-      alert("Acces nepermis");
+      alert("Acces nepermis!");
     }
   };
 

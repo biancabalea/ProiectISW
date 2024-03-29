@@ -23,6 +23,7 @@ const UserHome = () => {
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Department</th>
+              <th scope="col">Post</th>
               <th scope="col">Email</th>
               <th scope="col">Action</th>
             </tr>
@@ -34,6 +35,7 @@ const UserHome = () => {
                 <td>{user.name}</td>
                 <td>{user.department}</td>
                 <td>{user.email}</td>
+                <td>{user.post}</td>
                 <td>
                 <Link
                     className="btn btn-secondary mx-2"

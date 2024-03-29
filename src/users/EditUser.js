@@ -11,9 +11,10 @@ export default function EditUser() {
     name: "",
     department: "",
     email: "",
+    post: "",
   });
 
-  const { name, department, email } = user;
+  const { name, department, email, post } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -48,7 +49,7 @@ export default function EditUser() {
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter your name"
+                placeholder="Enter the name"
                 name="name"
                 value={name}
                 onChange={(e) => onInputChange(e)}
@@ -61,9 +62,22 @@ export default function EditUser() {
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter your department"
+                placeholder="Enter the department"
                 name="department"
                 value={department}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Post" className="form-label">
+                Post
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter the post"
+                name="post"
+                value={post}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
@@ -74,7 +88,7 @@ export default function EditUser() {
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter your e-mail address"
+                placeholder="Enter the e-mail address"
                 name="email"
                 value={email}
                 onChange={(e) => onInputChange(e)}

@@ -40,6 +40,10 @@ export default function ViewUser() {
                   {user.department}
                 </li>
                 <li className="list-group-item">
+                  <b>Post:</b>
+                  {user.post}
+                </li>
+                <li className="list-group-item">
                   <b>Email:</b>
                   {user.email}
                 </li>
