@@ -12,9 +12,10 @@ export default function EditUser() {
     department: "",
     email: "",
     post: "",
+    phone: "",
   });
 
-  const { name, department, email, post } = user;
+  const { name, department, email, post, phone } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -83,14 +84,27 @@ export default function EditUser() {
             </div>
             <div className="mb-3">
               <label htmlFor="Email" className="form-label">
-                E-mail
+                Email
               </label>
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter the e-mail address"
+                placeholder="Enter the email address"
                 name="email"
                 value={email}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Phone" className="form-label">
+                Phone
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter the phone"
+                name="phone"
+                value={phone}
                 onChange={(e) => onInputChange(e)}
               />
             </div>

@@ -7,6 +7,8 @@ export default function ViewUser() {
     name: "",
     department: "",
     email: "",
+    post: "",
+    phone: "",
   });
 
   const { id } = useParams();
@@ -32,20 +34,24 @@ export default function ViewUser() {
               Details of employee id : {user.id}
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
-                  <b>Name:</b>
+                  <b>Name: </b>
                   {user.name}
                 </li>
                 <li className="list-group-item">
-                  <b>Department:</b>
+                  <b>Department: </b>
                   {user.department}
                 </li>
                 <li className="list-group-item">
-                  <b>Post:</b>
+                  <b>Post: </b>
                   {user.post}
                 </li>
                 <li className="list-group-item">
-                  <b>Email:</b>
+                  <b>Email: </b>
                   {user.email}
+                </li>
+                <li className="list-group-item">
+                  <b>Phone: </b>
+                  {user.phone}
                 </li>
               </ul>
             </div>
