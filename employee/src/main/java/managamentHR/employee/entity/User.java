@@ -10,9 +10,18 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String department; 
+    private String department;
     private String name;
     private String email;
+    private String post;
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
+    }
 
     public Long getId() {
         return id;
