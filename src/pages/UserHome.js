@@ -14,9 +14,15 @@ const UserHome = () => {
     setUsers(result.data);
   };
 
+  const sortByName = () => {
+    const sortedUsers = [...users].sort((a, b) => a.name.localeCompare(b.name));
+    setUsers(sortedUsers);
+  };
+
   return (
     <div className="container">
       <div className="py-4">
+        <button onClick={sortByName}>Sort by Name</button>
         <table className="table border shadow">
           <thead>
             <tr>
@@ -35,11 +41,11 @@ const UserHome = () => {
                 <th scope="row">{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.department}</td>
-                <td>{user.email}</td>
                 <td>{user.post}</td>
+                <td>{user.email}</td>
                 <td>{user.phone}</td>
                 <td>
-                <Link
+                  <Link
                     className="btn btn-secondary mx-2"
                     to={`/viewuser/${user.id}`}
                   >

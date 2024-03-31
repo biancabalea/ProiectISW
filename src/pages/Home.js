@@ -47,8 +47,8 @@ export default function Home() {
                 </th>
                 <td>{user.name}</td>
                 <td>{user.department}</td>
-                <td>{user.email}</td>
                 <td>{user.post}</td>
+                <td>{user.email}</td>
                 <td>{user.phone}</td>
                 <td>
                   <Link
