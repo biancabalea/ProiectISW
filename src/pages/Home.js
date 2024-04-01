@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
-
-  const { id } = useParams();
 
   useEffect(() => {
     loadUsers();
@@ -17,16 +15,18 @@ export default function Home() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8080/user/${id}`);
-    loadUsers();
+    const isConfirmed = window.confirm("Are you sure you want to delete this employee?");
+    if (isConfirmed) {
+      setUsers(users.filter(user => user.id !== id));
+    }
   };
 
   return (
     <div className="container">
       <div className="py-4">
-      <Link className="btn btn-outline-secondary mx-2" to="/adduser">
-            Add Employee
-          </Link>
+        <Link className="btn btn-outline-secondary mx-2" to="/adduser">
+          Add Employee
+        </Link>
         <table className="table border shadow">
           <thead>
             <tr>
@@ -41,10 +41,8 @@ export default function Home() {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr>
-                <th scope="row" key={index}>
-                  {index + 1}
-                </th>
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.department}</td>
                 <td>{user.post}</td>
