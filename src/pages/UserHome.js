@@ -1,3 +1,5 @@
+// UserHome.js
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -19,10 +21,26 @@ const UserHome = () => {
     setUsers(sortedUsers);
   };
 
+  const requestLeave = async (userId, leaveDays) => {
+    try {
+      const response = await axios.post(`http://localhost:8080/requestLeave/${userId}?leaveDays=${leaveDays}`);
+      loadUsers();
+    } catch (error) {
+      console.error("Error requesting leave:", error);
+    }
+  };
+
+  const showLeaveRequestForm = (userId) => {
+    const leaveDays = prompt("Enter number of leave days:");
+    if (leaveDays !== null) {
+      requestLeave(userId, parseInt(leaveDays));
+    }
+  };
+
   return (
     <div className="container">
+      <button onClick={sortByName}>Sort by Name</button>
       <div className="py-4">
-        <button onClick={sortByName}>Sort by Name</button>
         <table className="table border shadow">
           <thead>
             <tr>
@@ -32,6 +50,7 @@ const UserHome = () => {
               <th scope="col">Post</th>
               <th scope="col">Email</th>
               <th scope="col">Phone</th>
+              <th scope="col">Leave Days</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -44,7 +63,9 @@ const UserHome = () => {
                 <td>{user.post}</td>
                 <td>{user.email}</td>
                 <td>{user.phone}</td>
+                <td>{user.leaveDays}</td>
                 <td>
+                  <button className="btn btn-outline-secondary mx-2" onClick={() => showLeaveRequestForm(user.id)}>Request Leave</button>
                   <Link
                     className="btn btn-secondary mx-2"
                     to={`/viewuser/${user.id}`}

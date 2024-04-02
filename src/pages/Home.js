@@ -36,6 +36,7 @@ export default function Home() {
               <th scope="col">Post</th>
               <th scope="col">Email</th>
               <th scope="col">Phone</th>
+              <th scope="col">Leave Days</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -48,6 +49,7 @@ export default function Home() {
                 <td>{user.post}</td>
                 <td>{user.email}</td>
                 <td>{user.phone}</td>
+                <td>{user.leaveDays}</td>
                 <td>
                   <Link
                     className="btn btn-secondary mx-2"
