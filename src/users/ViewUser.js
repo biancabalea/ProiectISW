@@ -9,6 +9,7 @@ export default function ViewUser() {
     email: "",
     post: "",
     phone: "",
+    leaveDays: "",
   });
 
   const { id } = useParams();
@@ -52,6 +53,10 @@ export default function ViewUser() {
                 <li className="list-group-item">
                   <b>Phone: </b>
                   {user.phone}
+                </li>
+                <li className="list-group-item">
+                  <b>Leave Days: </b>
+                  {user.leaveDays}
                 </li>
               </ul>
             </div>

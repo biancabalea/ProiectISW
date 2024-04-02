@@ -13,7 +13,7 @@ export default function AddUser() {
     phone: "",
   });
 
-  const { name, department, email, post, phone } = user;
+  const { name, department, email, post, phone, leaveDays } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -94,6 +94,19 @@ export default function AddUser() {
                 placeholder="Enter the phone"
                 name="phone"
                 value={phone}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="LeaveDays" className="form-label">
+                Leave Days
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter the leave days"
+                name="leavedays"
+                value={leaveDays}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
