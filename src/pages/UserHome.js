@@ -1,19 +1,22 @@
-// UserHome.js
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const UserHome = () => {
   const [users, setUsers] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     loadUsers();
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:8080/users");
-    setUsers(result.data);
+    try {
+      const result = await axios.get("http://localhost:8080/users");
+      setUsers(result.data);
+    } catch (error) {
+      console.error("Error loading users:", error);
+    }
   };
 
   const sortByName = () => {
@@ -33,13 +36,29 @@ const UserHome = () => {
   const showLeaveRequestForm = (userId) => {
     const leaveDays = prompt("Enter number of leave days:");
     if (leaveDays !== null) {
-      requestLeave(userId, parseInt(leaveDays));
+      const numericLeaveDays = parseInt(leaveDays);
+      const user = users.find(user => user.id === userId);
+      if (numericLeaveDays <= user.leaveDays) {
+        requestLeave(userId, numericLeaveDays);
+      } else {
+        setError("Error: Number of leave days exceeds remaining leave days.");
+      }
     }
+  };
+
+  const closeError = () => {
+    setError("");
   };
 
   return (
     <div className="container">
       <button onClick={sortByName}>Sort by Name</button>
+      {error && (
+        <div className="alert alert-danger">
+          {error}
+          <button className="btn-close" onClick={closeError}></button>
+        </div>
+      )}
       <div className="py-4">
         <table className="table border shadow">
           <thead>
