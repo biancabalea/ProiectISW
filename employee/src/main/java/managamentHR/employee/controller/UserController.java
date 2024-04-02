@@ -31,7 +31,6 @@ public class UserController {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
-
     @PutMapping("/user/{id}")
     User updateUser(@RequestBody User newUser, @PathVariable Long id) {
         return userRepository.findById(id)
@@ -41,10 +40,23 @@ public class UserController {
                     user.setEmail(newUser.getEmail());
                     user.setPost(newUser.getPost());
                     user.setPhone(newUser.getPhone());
+                    user.setLeaveDays(newUser.getLeaveDays());
                     return userRepository.save(user);
                 }).orElseThrow(() -> new UserNotFoundException(id));
     }
+    @PostMapping("/requestLeave/{id}")
+    User requestLeave(@PathVariable Long id, @RequestParam int leaveDays) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
 
+        int availableLeaveDays = user.getLeaveDays();
+        if (leaveDays > availableLeaveDays) {
+            throw new IllegalArgumentException("Insufficient leave days available");
+        }
+
+        user.setLeaveDays(availableLeaveDays - leaveDays);
+        return userRepository.save(user);
+    }
     @DeleteMapping("/user/{id}")
     String deleteUser(@PathVariable Long id){
         if(!userRepository.existsById(id)){

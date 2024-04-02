@@ -15,6 +15,16 @@ public class User {
     private String email;
     private String post;
     private String phone;
+    private int leaveDays;
+
+
+    public int getLeaveDays() {
+        return leaveDays;
+    }
+
+    public void setLeaveDays(int leaveDays) {
+        this.leaveDays = leaveDays;
+    }
 
     public String getPhone() {
         return phone;
